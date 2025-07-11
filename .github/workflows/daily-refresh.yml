@@ -2,6 +2,7 @@ name: Daily NFT Refresh
 
 on:
   schedule:
+  workflow_dispatch:
     - cron: '5 0 * * *'  # Runs every day at 00:05 UTC
 
 jobs:
