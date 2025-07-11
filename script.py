@@ -139,7 +139,7 @@ def main():
         print(f"Starting refresh cycle on {datetime.utcnow().strftime('%Y-%m-%d')} UTC")
         
         # TEMP for testing: 20 sequential from 1622, shuffled for random order
-        tokens_to_refresh = list(range(1622, 1642))
+        tokens_to_refresh = list(range(1262, 1282))
         random.shuffle(tokens_to_refresh)
         
         for token_id in tokens_to_refresh:
