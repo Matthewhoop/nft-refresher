@@ -75,7 +75,7 @@ def main():
         datetime(2025, 6, 11, 0, 1).date(),  # Return to normal for Sex day
         datetime(2025, 6, 23).date(),        # Birth of Crypto punks
         datetime(2025, 6, 25, 0, 1).date(),  # Return to normal for Crypto punks
-        datetime(2025, 7, 2).date(),         # UFO Day
+        datetime(2025, 7, 11).date(),         # UFO Day
         datetime(2025, 7, 4, 0, 1).date(),   # Return to normal for UFO Day
         datetime(2025, 7, 30).date(),        # Birth of ETH
         datetime(2025, 8, 1, 0, 1).date(),   # Return to normal for Birth of ETH
