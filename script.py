@@ -36,13 +36,16 @@ def main():
         print("Error: OPENSEA_API_KEY not set.")
         sys.exit(1)
 
-    min_token = 1
-    max_token = 4800
+    # Parse token range from command-line args (default: 1 to 4800)
+    if len(sys.argv) == 3:
+        min_token = int(sys.argv[1])
+        max_token = int(sys.argv[2])
+    else:
+        min_token = 1
+        max_token = 4800
 
     # List of target dates in UTC (fixed typos, e.g., 2024 -> 2025)
-    # Temporarily added today's date for testing—remove after!
     target_dates = [
-        datetime(2025, 7, 10).date(),        # TEMP: Added for July 10, 2025 testing
         datetime(2025, 1, 3).date(),         # Birth of BTC
         datetime(2025, 1, 5, 0, 1).date(),   # Return to normal for BTC
         datetime(2025, 1, 28).date(),        # NASA Day
@@ -75,7 +78,7 @@ def main():
         datetime(2025, 6, 11, 0, 1).date(),  # Return to normal for Sex day
         datetime(2025, 6, 23).date(),        # Birth of Crypto punks
         datetime(2025, 6, 25, 0, 1).date(),  # Return to normal for Crypto punks
-        datetime(2025, 7, 11).date(),         # UFO Day
+        datetime(2025, 7, 2).date(),         # UFO Day
         datetime(2025, 7, 4, 0, 1).date(),   # Return to normal for UFO Day
         datetime(2025, 7, 30).date(),        # Birth of ETH
         datetime(2025, 8, 1, 0, 1).date(),   # Return to normal for Birth of ETH
@@ -136,10 +139,10 @@ def main():
     ]
 
     if should_run_today(target_dates):
-        print(f"Starting refresh cycle on {datetime.utcnow().strftime('%Y-%m-%d')} UTC")
+        print(f"Starting refresh cycle on {datetime.utcnow().strftime('%Y-%m-%d')} UTC for tokens {min_token} to {max_token}")
         
-        # TEMP for testing: 20 sequential from 1622, shuffled for random order
-        tokens_to_refresh = list(range(1262, 1282))
+        # Get all tokens in range, shuffle for random order
+        tokens_to_refresh = list(range(min_token, max_token + 1))
         random.shuffle(tokens_to_refresh)
         
         for token_id in tokens_to_refresh:
@@ -153,7 +156,7 @@ def main():
             print(f"Waiting for {delay} seconds before next refresh.")
             time.sleep(delay)
         
-        print("Finished refreshing 20 NFTs from 1622.")
+        print(f"Finished refreshing tokens {min_token} to {max_token}.")
     else:
         print(f"Not a target date: {datetime.utcnow().strftime('%Y-%m-%d')} UTC. Exiting.")
 
